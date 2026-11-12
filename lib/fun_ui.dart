@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Bang mau + widget "vui nhon" dung chung cho toan app.
-/// Khong dung package ngoai; chi dung emoji va animation huu han
-/// (khong lap vo han de khong lam treo pumpAndSettle trong test).
-
 const sunYellow = Color(0xFFFFC83D);
 const sunSoft = Color(0xFFFFE9A8);
 const coral = Color(0xFFFF6B6B);
@@ -12,7 +8,6 @@ const grape = Color(0xFF9B6BFF);
 const bubblegum = Color(0xFFFF7EB6);
 const tangerine = Color(0xFFFF9F43);
 
-/// Mot bo mau gom 2 mau chuyen sac, mau nen nhat va mau bong do.
 class FunPalette {
   final Color a;
   final Color b;
@@ -39,7 +34,6 @@ const funPalettes = <FunPalette>[
 int _hash(String s) =>
     s.codeUnits.fold<int>(7, (h, c) => (h * 31 + c) & 0x7fffffff);
 
-/// Cung mot diem den luon ra cung mot bo mau.
 FunPalette paletteFor(String seed) => funPalettes[_hash(seed) % funPalettes.length];
 
 const _fallbackEmojis = ['🧳', '🌍', '🎒', '📸', '🌴', '🚀'];
@@ -57,7 +51,7 @@ const _emojiRules = <List<Object>>[
   [['singapore'], '🦁'],
 ];
 
-/// Chon emoji hop voi diem den (theo tu khoa), khong khop thi chon theo hash.
+
 String emojiForDestination(String text) {
   final t = text.toLowerCase();
   for (final rule in _emojiRules) {
@@ -67,7 +61,6 @@ String emojiForDestination(String text) {
   return _fallbackEmojis[_hash(t) % _fallbackEmojis.length];
 }
 
-/// Nhan nhe khi cham: co lai mot chut roi bat ra (hieu ung "boing").
 class Pressable extends StatefulWidget {
   final Widget child;
   final double scale;
@@ -98,8 +91,6 @@ class _PressableState extends State<Pressable> {
       );
 }
 
-/// Hieu ung hien ra: truot len + mo dan, co nay nhe (easeOutBack).
-/// `index` cang lon thi xuat hien cang tre (khong dung Timer).
 class PopIn extends StatelessWidget {
   final int index;
   final Widget child;
@@ -118,7 +109,6 @@ class PopIn extends StatelessWidget {
       );
 }
 
-/// O vuong bo goc chua mot emoji, nghieng nhe nhu mieng sticker.
 class EmojiBadge extends StatelessWidget {
   final String emoji;
   final double size;
@@ -148,7 +138,6 @@ class EmojiBadge extends StatelessWidget {
       );
 }
 
-/// Mau + emoji cho tung loai hoat dong.
 Color activityTone(String category) {
   switch (category) {
     case 'food':
